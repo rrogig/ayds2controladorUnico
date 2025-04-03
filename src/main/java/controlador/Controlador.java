@@ -32,6 +32,8 @@ public class Controlador implements ActionListener{
         this.vistaLogIn = vistaLogIn;
         this.sistema = sistema;        
     }
+    
+ 
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -66,6 +68,28 @@ public class Controlador implements ActionListener{
         }
 
         
+    }
+
+    public void listaContactosMouseClicked(java.awt.event.MouseEvent evt){
+        String nickSeleccionado = vista.getListaContactosSeleccionado();
+        Contacto contacto = sistema.buscaContactoPorNick(nickSeleccionado);
+        vista.setNickChatSeleccionado(nickSeleccionado);
+        vista.setPuertoChatSeleccionado(contacto.getPuerto());
+        if (contacto.getTieneChat()) {
+            //TODO: sistema.cargaChat();
+        } else {
+            contacto.setTieneChat(true);
+            sistema.getNicksChats().addElement(nickSeleccionado);
+        }
+        vista.cambiarAVentanaChat();
+    }
+
+    public void listaChatsMouseClicked(java.awt.event.MouseEvent evt){
+        String nickSeleccionado = vista.getListaChatsSeleccionado();
+        Contacto contacto = sistema.buscaContactoPorNick(nickSeleccionado);
+        vista.setNickChatSeleccionado(nickSeleccionado);
+        vista.setPuertoChatSeleccionado(contacto.getPuerto());
+        //TODO: sistema.cargaChat();
     }
 
     public void iniciaSesion(String nickname, int puerto){

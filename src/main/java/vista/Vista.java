@@ -598,6 +598,22 @@ public class Vista extends javax.swing.JFrame {
 		this.bEnviar.addActionListener(c);
 		this.bAgregarContacto.addActionListener(c);
         listaContactos.setModel(c.getSistema().getNicksContactos());
+        listaChats.setModel(c.getSistema().getNicksChats());
+        
+        // el controlador tambien sera mouseListener
+        listaContactos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt){
+                c.listaContactosMouseClicked(evt);
+            }
+        });
+
+        listaChats.addMouseListener(new java.awt.event.MouseAdapter(){
+            public void mouseClicked(java.awt.event.MouseEvent evt){
+                c.listaChatsMouseClicked(evt);
+            }
+        });
+
+    }
         /*listContactos.setModel(controlador.getContactos());
 		this.listContactos.addListSelectionListener(new ListSelectionListener(){
 
@@ -612,7 +628,7 @@ public class Vista extends javax.swing.JFrame {
 				}
 			}
 		}); */
-	}
+	
 
     private void textoMensajeKeyReleased(java.awt.event.KeyEvent evt) {
         if (textoMensaje.getText().length() != 0) {
@@ -656,6 +672,31 @@ public class Vista extends javax.swing.JFrame {
         } else
             return puerto;
     }
+    
+    public void setNickChatSeleccionado(String nickname) {
+        this.nombreChatSeleccionado.setText(nickname);
+    }
+
+    public void setPuertoChatSeleccionado(int puerto) {       
+        this.puertoChatSeleccionado.setText(String.valueOf(puerto));
+    }
+
+    public void cambiarAVentanaChat() {
+        this.tabbedPane.setSelectedIndex(0); // Cambia al tab donde están los chats
+    }
+
+    public String getListaContactosSeleccionado(){
+        return listaContactos.getSelectedValue();
+    }
+
+    public String getListaChatsSeleccionado(){
+        return listaChats.getSelectedValue();
+    }
+
+
+
+    
+    
     /* 
     public void setControlador (Controlador c){
         nicknameUsuario.setText(c.getNickUsuario());

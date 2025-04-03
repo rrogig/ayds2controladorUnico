@@ -67,12 +67,52 @@ public class Sistema {
     public DefaultListModel<String> getNicksChats(){
         return this.nicksChats;
     }
+
+    public void agregaNickChat(String nick){
+        
+    }
     
     public void nuevoContacto(String nickname, int puerto, String ip){
         //TODO: chequear que el nickname sea univoco antes de instanciar
         Contacto contacto = new Contacto(nickname, puerto, "localhost");
         this.contactos.addElement(contacto);
         this.nicksContactos.addElement(contacto.getNickname());
+    }
+
+    public Contacto buscaContactoPorNick(String nick){
+        //busca en la lista de contactos
+        int i, n;
+        i=0;
+        Contacto aux = null;
+        n=this.getContactos().size();
+        while (i<n && !this.getContactos().get(i).getNickname().equals(nick))
+            i++;
+        if (i<n){//siempre deberia encontrarlo
+            aux = this.getContactos().get(i);
+        }
+        else{
+            System.out.println("el Contacto buscado por nick NO existe");
+        }
+        return aux;
+    }
+
+    public Contacto buscaContactoPorPuerto(int puerto){
+         //busca en la lista de contactos
+        int i, n;
+        i=0;
+        Contacto aux = null;
+        n=this.getContactos().size();
+        while (i<n && this.getContactos().get(i).getPuerto()!=puerto)
+            i++;
+        if (i<n){//siempre deberia encontrarlo
+            aux = this.getContactos().get(i);
+        }
+        else{
+            System.out.println("el Contacto buscado por puerto NO existe");
+        }
+        return aux;
+    }
+
     }
     /* 
     
@@ -181,4 +221,4 @@ public class Sistema {
     }
         */
   
-}
+

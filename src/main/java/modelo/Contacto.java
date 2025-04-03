@@ -14,6 +14,7 @@ public class Contacto {
     private String nickname;
     private int puerto;
     private String ip;
+    private boolean tieneChat;
     private ArrayList<Mensaje> mensajes = new ArrayList<Mensaje>();
     
     public Contacto(String nickname, int puerto, String ip) {
@@ -21,6 +22,7 @@ public class Contacto {
         this.nickname = nickname;
         this.puerto = puerto;
         this.ip = ip;
+        this.tieneChat = false;
     }  
     public String getNickname() {
         return nickname;
@@ -33,4 +35,13 @@ public class Contacto {
     public String getIp() {
         return ip;
     }  
+    
+    public boolean getTieneChat(){
+        return tieneChat;
+    }
+    
+    public void setTieneChat(boolean tieneChat){
+        this.tieneChat = tieneChat;
+    }
+    
 }
