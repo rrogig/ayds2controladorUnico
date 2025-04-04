@@ -39,6 +39,7 @@ public class VistaLogIn extends javax.swing.JFrame {
         ipUsuario = new javax.swing.JTextField();
         puertoUsuario = new javax.swing.JTextField();
         bLogIn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField1");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +62,7 @@ public class VistaLogIn extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         nickUsuario.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
-        nickUsuario.setForeground(new java.awt.Color(255, 204, 204));
+        nickUsuario.setForeground(new java.awt.Color(245, 85, 132));
         nickUsuario.setText(" nickname");
         nickUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -75,7 +76,7 @@ public class VistaLogIn extends javax.swing.JFrame {
         });
 
         ipUsuario.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
-        ipUsuario.setForeground(new java.awt.Color(255, 204, 204));
+        ipUsuario.setForeground(new java.awt.Color(245, 85, 132));
         ipUsuario.setText(" ip");
         ipUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +85,7 @@ public class VistaLogIn extends javax.swing.JFrame {
         });
 
         puertoUsuario.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
-        puertoUsuario.setForeground(new java.awt.Color(255, 204, 204));
+        puertoUsuario.setForeground(new java.awt.Color(245, 85, 132));
         puertoUsuario.setText(" puerto");
         puertoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,15 +98,15 @@ public class VistaLogIn extends javax.swing.JFrame {
             }
         });
 
-        bLogIn.setBackground(new java.awt.Color(255, 204, 204));
+        bLogIn.setBackground(new java.awt.Color(245, 85, 132));
         bLogIn.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
         bLogIn.setForeground(new java.awt.Color(255, 255, 255));
-        bLogIn.setText("log");
+        bLogIn.setText("log in");
         bLogIn.setActionCommand("LogIn");
         //bLogIn.addActionListener(new java.awt.event.ActionListener() {
-         //   public void actionPerformed(java.awt.event.ActionEvent evt) {
-         //       bLogInClicked(evt);
-         //   }
+        //    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        //        bLogInClicked(evt);
+        //    }
         //});
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -122,8 +123,8 @@ public class VistaLogIn extends javax.swing.JFrame {
                             .addComponent(nickUsuario))
                         .addGap(131, 131, 131))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(bLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(231, 231, 231))))
+                        .addComponent(bLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(181, 181, 181))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,21 +140,30 @@ public class VistaLogIn extends javax.swing.JFrame {
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 
+        jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Mensajería Instantánea");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(256, 256, 256)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(256, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
+                .addGap(119, 119, 119)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -274,6 +284,7 @@ public class VistaLogIn extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bLogIn;
     private javax.swing.JTextField ipUsuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField2;

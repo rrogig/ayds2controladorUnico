@@ -128,6 +128,29 @@ public class Sistema {
         return aux;
     }
 
+    public int buscaPosListaChats(String nickname){
+        int i = this.nicksChats.indexOf(nickname);
+        return i;
+    }
+
+    public void poneNotificacion(String nickname){
+        int i = this.nicksChats.indexOf(nickname);
+        if (!nicksChats.getElementAt(i).endsWith("[!!!]"))
+            nicksChats.set(i, nicksChats.get(i) + "[!!!]");
+        //buscamos la posicion donde se encuentra nickname
+        //copiamos ese string: nickname + [!!!]
+        //guardamos ese string en la misma posicion que se encontraba el original
+        //String string = buscaPosListaChats(nickname).append()
+    }
+
+    public void sacaNotificacion(String nickname){
+        int i = this.nicksChats.indexOf(nickname);
+        String nick = nicksChats.get(i);
+        //nicksChats.set(i, nicksChats.get(i) + "[!!!]");
+        if (nick.endsWith("[!!!]"))
+            nicksChats.set(i, nick.substring(0, nick.length() - 5));
+    }
+
 }
     
     

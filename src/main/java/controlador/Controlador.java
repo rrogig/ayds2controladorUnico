@@ -107,6 +107,13 @@ public class Controlador implements ActionListener{
     public void listaChatsMouseClicked(java.awt.event.MouseEvent evt){
         vista.limpiaChat();
         String nickSeleccionado = vista.getListaChatsSeleccionado();
+         if (nickSeleccionado.endsWith("[!!!]")) {
+            sistema.sacaNotificacion(nickSeleccionado);
+            // actualizar la vista para que se vea sin Â¨!!!n '> cambia automaticamente cuando cambia la l.ista de chats'
+            System.out.println("El nick que elegi tiene una notificiacion. Cortando ... ");
+            nickSeleccionado = nickSeleccionado.substring(0, nickSeleccionado.length() - 5);
+            System.out.println("El nick cortado es: " + nickSeleccionado);
+        }
         Contacto contacto = sistema.buscaContactoPorNick(nickSeleccionado);
         vista.setNickChatSeleccionado(nickSeleccionado);
         vista.setPuertoChatSeleccionado(contacto.getPuerto());
@@ -152,6 +159,11 @@ public class Controlador implements ActionListener{
         if (vista.getNicknameChatSeleccionado().equals(contacto.getNickname())){
             vista.limpiaChat();
             vista.cargaChat(contacto.getMensajes());
+        }
+        else{
+            sistema.poneNotificacion(contacto.getNickname());
+            //sistema.getNicksChats().getElementAt(sistema.getNicksChats().indexOf(contacto.getNickname()));
+            //vista.sacarNotificacion(); 
         }
     }
 }

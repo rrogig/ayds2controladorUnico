@@ -89,7 +89,7 @@ public class Vista extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         tabbedPane.setBackground(new java.awt.Color(255, 255, 255));
-        tabbedPane.setForeground(new java.awt.Color(255, 204, 204));
+        tabbedPane.setForeground(new java.awt.Color(245, 85, 132));
         tabbedPane.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tabbedPane.setFont(new java.awt.Font("Meiryo", 0, 14)); // NOI18N
 
@@ -99,11 +99,11 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel1.setForeground(new java.awt.Color(245, 85, 132));
         jLabel1.setText("chats activos");
 
         listaChats.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
-        listaChats.setForeground(new java.awt.Color(255, 204, 204));
+        listaChats.setForeground(new java.awt.Color(245, 85, 132));
         listaChats.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -112,8 +112,8 @@ public class Vista extends javax.swing.JFrame {
         listaChats.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         //listaChats.addMouseListener(new java.awt.event.MouseAdapter() {
         //    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                //listaChatsMouseClicked(evt);
-         //   }
+        //        listaChatsMouseClicked(evt);
+        //    }
         //});
         jScrollPane1.setViewportView(listaChats);
 
@@ -142,16 +142,14 @@ public class Vista extends javax.swing.JFrame {
 
         nombreChatSeleccionado.setBackground(new java.awt.Color(255, 255, 255));
         nombreChatSeleccionado.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
-        nombreChatSeleccionado.setForeground(new java.awt.Color(255, 204, 204));
-        nombreChatSeleccionado.setText("nombreChat");
+        nombreChatSeleccionado.setForeground(new java.awt.Color(245, 85, 132));
 
         puertoChatSeleccionado.setBackground(new java.awt.Color(255, 255, 255));
         puertoChatSeleccionado.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
-        puertoChatSeleccionado.setForeground(new java.awt.Color(255, 204, 204));
-        puertoChatSeleccionado.setText("puertoChat");
+        puertoChatSeleccionado.setForeground(new java.awt.Color(245, 85, 132));
 
         textoMensaje.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
-        textoMensaje.setForeground(new java.awt.Color(255, 204, 204));
+        textoMensaje.setForeground(new java.awt.Color(245, 85, 132));
         textoMensaje.setText("ingrese su texto aqui ...");
         textoMensaje.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -165,7 +163,7 @@ public class Vista extends javax.swing.JFrame {
         });
 
         bEnviar.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
-        bEnviar.setForeground(new java.awt.Color(255, 204, 204));
+        bEnviar.setForeground(new java.awt.Color(245, 85, 132));
         bEnviar.setText("enviar");
         bEnviar.setActionCommand("Enviar");
         //bEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +173,8 @@ public class Vista extends javax.swing.JFrame {
         //});
 
         chat.setColumns(20);
+        chat.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
+        chat.setForeground(new java.awt.Color(245, 85, 132));
         chat.setRows(5);
         jScrollPane2.setViewportView(chat);
 
@@ -243,11 +243,11 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel4.setForeground(new java.awt.Color(245, 85, 132));
         jLabel4.setText("lista de contactos");
 
         listaContactos.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
-        listaContactos.setForeground(new java.awt.Color(255, 204, 204));
+        listaContactos.setForeground(new java.awt.Color(245, 85, 132));
         listaContactos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -256,7 +256,7 @@ public class Vista extends javax.swing.JFrame {
         listaContactos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         //listaContactos.addMouseListener(new java.awt.event.MouseAdapter() {
         //    public void mouseClicked(java.awt.event.MouseEvent evt) {
-         //       listaContactosMouseClicked(evt);
+        //        listaContactosMouseClicked(evt);
         //    }
         //});
         jScrollPane3.setViewportView(listaContactos);
@@ -285,10 +285,10 @@ public class Vista extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel5.setFont(new java.awt.Font("Meiryo UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel5.setForeground(new java.awt.Color(245, 85, 132));
         jLabel5.setText("agregar contacto");
 
-        nickContactoAgregado.setForeground(new java.awt.Color(255, 204, 204));
+        nickContactoAgregado.setForeground(new java.awt.Color(245, 85, 132));
         nickContactoAgregado.setText("nickname");
         nickContactoAgregado.setCaretColor(new java.awt.Color(255, 204, 204));
         nickContactoAgregado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -302,7 +302,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        ipContactoAgregado.setForeground(new java.awt.Color(255, 204, 204));
+        ipContactoAgregado.setForeground(new java.awt.Color(245, 85, 132));
         ipContactoAgregado.setText("IP");
         ipContactoAgregado.setCaretColor(new java.awt.Color(255, 204, 204));
         ipContactoAgregado.addActionListener(new java.awt.event.ActionListener() {
@@ -311,7 +311,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        puertoContactoAgregado.setForeground(new java.awt.Color(255, 204, 204));
+        puertoContactoAgregado.setForeground(new java.awt.Color(245, 85, 132));
         puertoContactoAgregado.setText("puerto");
         puertoContactoAgregado.setCaretColor(new java.awt.Color(255, 204, 204));
         puertoContactoAgregado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -325,7 +325,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        bAgregarContacto.setForeground(new java.awt.Color(255, 204, 204));
+        bAgregarContacto.setForeground(new java.awt.Color(245, 85, 132));
         bAgregarContacto.setText("agregar");
         bAgregarContacto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -334,9 +334,9 @@ public class Vista extends javax.swing.JFrame {
         });
         bAgregarContacto.setActionCommand("AgregarContacto");
         //bAgregarContacto.addActionListener(new java.awt.event.ActionListener() {
-            //public void actionPerformed(java.awt.event.ActionEvent evt) {
-               // bAgregarContactoActionPerformed(evt);
-            //}
+        //    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        //        bAgregarContactoActionPerformed(evt);
+        //    }
         //});
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -415,7 +415,7 @@ public class Vista extends javax.swing.JFrame {
 
         nicknameUsuario.setFont(new java.awt.Font("Meiryo UI", 1, 18)); // NOI18N
         nicknameUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        nicknameUsuario.setText("Rocio");
+        nicknameUsuario.setText("usuario");
 
         puertoUsuario.setBackground(new java.awt.Color(255, 204, 204));
         puertoUsuario.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
