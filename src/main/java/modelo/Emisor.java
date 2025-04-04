@@ -14,31 +14,35 @@ import java.net.Socket;
  * @author Usuario
  */
 public class Emisor {
+    String mensaje;
+    String ipReceptor;
+    int puertoReceptor;
     // esta clase se encarga de enviar mensajes
     // creando client sockets 
     // que elimina instantaneamente luego de enviar el mensaje
-    public Emisor() {
+    public Emisor(String mensaje, String ipReceptor, int puertoReceptor) {
+        this.mensaje = mensaje;
+        this.ipReceptor = ipReceptor;
+        this.puertoReceptor = puertoReceptor;
     }
-    /*
-    public void clienteInstantaneo(Mensaje mensaje){
+    public void clienteInstantaneo(){
         try {
             // lo llama el controlador cuando se clickea send
             // se abre
-            Socket socket = new Socket(mensaje.getIpReceptor(), mensaje.getPuertoReceptor());    
+            Socket socket = new Socket(ipReceptor, puertoReceptor);   
+            System.out.println("Se abrio el socket cliente") ;
+            System.out.println("Se esta enviando al socket "+ puertoReceptor) ;
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String textMensaje = mensaje.getEmisor() + ":" + mensaje.getIpEmisor() + ":" + mensaje.getPuertoEmisor() + ":" + mensaje.getTexto();
             
-            out.println(textMensaje);
-            System.out.println("Se envio el mensaje :" + textMensaje);
+            out.println(mensaje);
+            System.out.println("Se envio el mensaje :" + mensaje);
             out.close();
             socket.close();
-            
+            System.out.println("Se cerro el socket cliente") ;
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    */
-    
-    
+    }  
 }
+

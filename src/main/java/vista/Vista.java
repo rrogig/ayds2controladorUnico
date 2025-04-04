@@ -16,13 +16,13 @@ public void setControlador(ControladorLogin c){
 
 
 import modelo.Chat;
-import modelo.Mensaje;
 import modelo.Contacto;
 import controlador.Controlador;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 
 
@@ -110,6 +110,11 @@ public class Vista extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         listaChats.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        //listaChats.addMouseListener(new java.awt.event.MouseAdapter() {
+        //    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                //listaChatsMouseClicked(evt);
+         //   }
+        //});
         jScrollPane1.setViewportView(listaChats);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -148,15 +153,26 @@ public class Vista extends javax.swing.JFrame {
         textoMensaje.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
         textoMensaje.setForeground(new java.awt.Color(255, 204, 204));
         textoMensaje.setText("ingrese su texto aqui ...");
+        textoMensaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textoMensajeMouseClicked(evt);
+            }
+        });
+        textoMensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoMensajeActionPerformed(evt);
+            }
+        });
 
         bEnviar.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
         bEnviar.setForeground(new java.awt.Color(255, 204, 204));
         bEnviar.setText("enviar");
-        bEnviar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bEnviarActionPerformed(evt);
-            }
-        });
+        bEnviar.setActionCommand("Enviar");
+        //bEnviar.addActionListener(new java.awt.event.ActionListener() {
+        //    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        //        bEnviarActionPerformed(evt);
+        //    }
+        //});
 
         chat.setColumns(20);
         chat.setRows(5);
@@ -238,6 +254,11 @@ public class Vista extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         listaContactos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        //listaContactos.addMouseListener(new java.awt.event.MouseAdapter() {
+        //    public void mouseClicked(java.awt.event.MouseEvent evt) {
+         //       listaContactosMouseClicked(evt);
+        //    }
+        //});
         jScrollPane3.setViewportView(listaContactos);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -313,9 +334,9 @@ public class Vista extends javax.swing.JFrame {
         });
         bAgregarContacto.setActionCommand("AgregarContacto");
         //bAgregarContacto.addActionListener(new java.awt.event.ActionListener() {
-        //    public void actionPerformed(java.awt.event.ActionEvent evt) {
-        //        bAgregarContactoActionPerformed(evt);
-         //   }
+            //public void actionPerformed(java.awt.event.ActionEvent evt) {
+               // bAgregarContactoActionPerformed(evt);
+            //}
         //});
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -496,6 +517,15 @@ public class Vista extends javax.swing.JFrame {
         puertoContactoAgregado.setText("");
     }//GEN-LAST:event_puertoContactoAgregadoMouseClicked
 
+    private void textoMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoMensajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoMensajeActionPerformed
+
+    private void textoMensajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textoMensajeMouseClicked
+        // TODO add your handling code here:
+        textoMensaje.setText("");
+    }//GEN-LAST:event_textoMensajeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -540,6 +570,14 @@ public class Vista extends javax.swing.JFrame {
     public void setPuertoUsuario(int puertoUsuario){
         String aux = Integer.toString(puertoUsuario);
         this.puertoUsuario.setText(aux);
+    }
+
+    public String getNicknameUsuario(){
+        return this.nicknameUsuario.getText();
+    }
+
+    public int getPuertoUsuario(){
+        return Integer.parseInt(this.puertoUsuario.getText());
     }
     
     public String getNickContactoAgregado() {
@@ -591,28 +629,35 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField textoMensaje;
     // End of variables declaration//GEN-END:variables
     
-
-
     public void setControlador(Controlador c){
-
 		this.bEnviar.addActionListener(c);
 		this.bAgregarContacto.addActionListener(c);
         listaContactos.setModel(c.getSistema().getNicksContactos());
-        listaChats.setModel(c.getSistema().getNicksChats());
+        listaChats.setModel(c.getSistema().getNicksChats()); 
         
-        // el controlador tambien sera mouseListener
         listaContactos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt){
                 c.listaContactosMouseClicked(evt);
             }
         });
-
         listaChats.addMouseListener(new java.awt.event.MouseAdapter(){
             public void mouseClicked(java.awt.event.MouseEvent evt){
                 c.listaChatsMouseClicked(evt);
             }
         });
-
+    
+    }
+    public void limpiaChat(){
+        this.chat.setText("");
+    }
+    
+     public void cargaChat(ArrayList<String> mensajes) {
+        for (String mensaje : mensajes){
+            String[] mensajeFormateado = mensaje.split("#", 4);
+            // TODO: if para cuando recibamos o mandemos d eun lado u otro
+            // sistema.recibeMensaje(mensaje[0], mensaje[1], Integer.parseInt(mensaje[2]), mensaje[3]);//godd
+                this.chat.append(mensajeFormateado[3] + "\n");
+        }
     }
         /*listContactos.setModel(controlador.getContactos());
 		this.listContactos.addListSelectionListener(new ListSelectionListener(){
@@ -629,7 +674,7 @@ public class Vista extends javax.swing.JFrame {
 			}
 		}); */
 	
-
+    
     private void textoMensajeKeyReleased(java.awt.event.KeyEvent evt) {
         if (textoMensaje.getText().length() != 0) {
             bEnviar.setEnabled(true);
@@ -692,6 +737,19 @@ public class Vista extends javax.swing.JFrame {
     public String getListaChatsSeleccionado(){
         return listaChats.getSelectedValue();
     }
+
+    public String getTextoMensaje(){
+        return textoMensaje.getText();
+    }
+
+    public int getPuertoChatSeleccionado(){
+        return Integer.parseInt(this.puertoChatSeleccionado.getText());
+    }
+
+    public String getNicknameChatSeleccionado(){
+        return this.nombreChatSeleccionado.getText();
+    }
+
 
 
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Usuario
  */
-public class Chat {
+public class Chat {/*
     private ArrayList<Mensaje> mensajes = new ArrayList<Mensaje>() ;
     private Contacto contacto;
     
@@ -49,5 +49,5 @@ public class Chat {
     @Override
     public String toString() {
             return contacto.getNickname();
-    }   
+    }   */
 }

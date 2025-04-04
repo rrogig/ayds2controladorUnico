@@ -1,7 +1,5 @@
-modelo\Mensaje.class
-vista\Vista$12.class
+controlador\Controlador.class
 modelo\Contacto.class
 modelo\Chat.class
 vista\Vista$11.class
 modelo\Usuario.class
-controlador\Controlador.class

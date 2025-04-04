@@ -8,6 +8,7 @@ import controlador.Controlador;
 import java.util.List;
 import java.util.stream.Stream;
 import javax.swing.DefaultListModel;
+import java.time.LocalDateTime;
 
 
 /**
@@ -35,12 +36,7 @@ public class Sistema {
         this.usuario = usuarioRegistrado;      
     }
     */
-    // inicia el thread receptor que siempre debe estar abierta
-    public void iniciaReceptor() {
-        System.out.println("Se inicio el server socket");
-        this.receptor = new Receptor(this);
-        this.receptor.start();    
-    }
+
 
     public void setNickUsuario(String nickUsuario){
         this.nickUsuario = nickUsuario;
@@ -113,7 +109,28 @@ public class Sistema {
         return aux;
     }
 
+    public String creaStringMensaje(String texto, String nicknameUsuario, int puerto){
+        String mensaje,hora = LocalDateTime.now().toString();
+        mensaje = nicknameUsuario + "#" + String.valueOf(puerto) + "#" + hora + "#" + texto;
+        return mensaje;
     }
+
+    public void enviaMensaje(String mensaje, String ipContacto, int puertoContacto){
+        Emisor emisor = new Emisor(mensaje, ipContacto, puertoContacto);
+        emisor.clienteInstantaneo();       
+    }
+
+    public boolean esContactoExistente(int puerto, String ip){
+        Boolean aux=false;
+        Contacto contacto = buscaContactoPorPuerto(puerto);
+        if (contacto!=null)
+            aux=true; 
+        return aux;
+    }
+
+}
+    
+    
     /* 
     
     // agregar contactos (automatico cuando me hablan o manual cuando agrego)
