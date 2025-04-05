@@ -1,4 +1,4 @@
-# Primer entrega del proyecto de Mensajería Instantánea 
+# Mensajería Instantánea - Primer entrega
 ## Análisis y Diseño de Sistemas II, UNMdP
 ### Alumnas Bianchini, Entrocassi, Gigliotti y Stadler
 
