@@ -15,7 +15,6 @@ public void setControlador(ControladorLogin c){
 */
 
 
-import modelo.Chat;
 import modelo.Contacto;
 import controlador.Controlador;
 import javax.swing.event.ListSelectionEvent;
@@ -584,7 +583,7 @@ public class Vista extends javax.swing.JFrame {
         String aux = this.nickContactoAgregado.getText();
         if (!aux.equals(""))
                 return aux;
-        JOptionPane.showMessageDialog(null,"Debe Introducir nombre de usuario");
+        JOptionPane.showMessageDialog(null,"Debe introducir nombre de usuario");
         return null;
     }
 
@@ -654,9 +653,9 @@ public class Vista extends javax.swing.JFrame {
      public void cargaChat(ArrayList<String> mensajes) {
         for (String mensaje : mensajes){
             String[] mensajeFormateado = mensaje.split("#", 4);
-            // TODO: if para cuando recibamos o mandemos d eun lado u otro
-            // sistema.recibeMensaje(mensaje[0], mensaje[1], Integer.parseInt(mensaje[2]), mensaje[3]);//godd
-                this.chat.append(mensajeFormateado[3] + "\n");
+            String hora = mensajeFormateado[2].substring(11,16);
+            
+                this.chat.append(mensajeFormateado[0] + " ["+ hora +"]: " +mensajeFormateado[3] + "\n");
         }
     }
         /*listContactos.setModel(controlador.getContactos());
@@ -742,6 +741,10 @@ public class Vista extends javax.swing.JFrame {
         return textoMensaje.getText();
     }
 
+    public void setTextoMensaje(String string){
+        textoMensaje.setText(string);
+    }
+
     public int getPuertoChatSeleccionado(){
         return Integer.parseInt(this.puertoChatSeleccionado.getText());
     }
@@ -749,6 +752,11 @@ public class Vista extends javax.swing.JFrame {
     public String getNicknameChatSeleccionado(){
         return this.nombreChatSeleccionado.getText();
     }
+
+    public void muestraVentanaEmergente(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+
 
 
 

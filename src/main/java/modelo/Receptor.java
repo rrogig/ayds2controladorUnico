@@ -46,7 +46,8 @@ public class Receptor extends Thread{
                 soc.close();
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("El server socket se cerro");
+            System.out.println(e.getMessage());     
         }
     }
 }

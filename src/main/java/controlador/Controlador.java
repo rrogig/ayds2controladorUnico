@@ -6,16 +6,17 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.ServerSocket;
+
 import javax.swing.DefaultListModel;
-import modelo.Chat;
 import modelo.Receptor;
 import modelo.Contacto;
 import modelo.Sistema;
-import modelo.Usuario;
 import vista.Vista;
 import vista.VistaLogIn;
 
-/**
+/**()
  *
  * @author Usuario
  */
@@ -40,38 +41,52 @@ public class Controlador implements ActionListener{
             System.out.print("Entre al action command de Login!!");
             String nickUsuario = vistaLogIn.getNickUsuario();
             int puertoUsuario = vistaLogIn.getPuertoUsuario();
-            // llenar campo nickUsuario
-            sistema.setNickUsuario(nickUsuario);
-            sistema.setPuertoUsuario(puertoUsuario);
-            vista.setNickUsuario(nickUsuario);
-            // llenar campo puertoUsuario
-            vista.setPuertoUsuario(puertoUsuario);
-            // ARRANCAR EL SERVER SOCKET en otro thread
-            this.iniciaReceptor();
-            
-            //settear visible vistaChats
-            this.vista.setVisible(true);
-            this.vistaLogIn.setVisible(false);
-            //settear invisible vistaLogin
+
+            if ((puertoUsuario == -1) || !puertoDisponible(puertoUsuario)){
+                vistaLogIn.muestraVentanaEmergente("El puerto es invalido o esta en uso");
+            }else{
+                if (nickUsuario.equals("") || nickUsuario.equals(" nickname"))
+                    vistaLogIn.muestraVentanaEmergente("Se debe ingresar un nombre de usuario");
+                else{
+                     // llenar campo nickUsuario
+                    sistema.setNickUsuario(nickUsuario);
+                    sistema.setPuertoUsuario(puertoUsuario);
+                    vista.setNickUsuario(nickUsuario);
+                    // llenar campo puertoUsuario
+                    vista.setPuertoUsuario(puertoUsuario);
+                    // ARRANCAR EL SERVER SOCKET en otro thread
+                    this.iniciaReceptor();
+                    //settear visible vistaChats
+                    this.vista.setVisible(true);
+                    this.vistaLogIn.setVisible(false);
+                    //settear invisible vistaLogin
+                }
+            }
         }
+        
         if (e.getActionCommand().equals("Enviar")){
             System.out.print("Entre al action command de enviar mensaje!!");
             // 
             // Crear el string mensaje agarrando = lo que esta en el textField, nickUsuario, puertoUsuario, y hora de envio
             String mensaje;
             mensaje = sistema.creaStringMensaje(vista.getTextoMensaje(), vista.getNicknameUsuario(), vista.getPuertoUsuario());
-              
+            vista.setTextoMensaje("");
             // instanciar server socket y enviar
             System.out.println("Se creo el string para mensaje. El string creado es: " + mensaje + "\n");
             int puertoContacto = vista.getPuertoChatSeleccionado();
             Contacto contacto = sistema.buscaContactoPorPuerto(puertoContacto);
 
-            contacto.getMensajes().add(mensaje);
-            vista.limpiaChat();
-            vista.cargaChat(contacto.getMensajes());
+            //contacto.getMensajes().add(mensaje);
+            //vista.limpiaChat();
+            //vista.cargaChat(contacto.getMensajes());
 
-            sistema.enviaMensaje(mensaje,"localhost",puertoContacto);
-            
+            if (!puertoDisponible(contacto.getPuerto())){
+                sistema.enviaMensaje(mensaje,"localhost",puertoContacto);
+                contacto.getMensajes().add(mensaje);
+                vista.limpiaChat();
+                vista.cargaChat(contacto.getMensajes());
+            } else
+                vista.muestraVentanaEmergente("El contacto no está conectado");
             
 
                 // sacar datos del contacto al que le estamos enviando desde la vista
@@ -84,10 +99,27 @@ public class Controlador implements ActionListener{
             String nickname = vista.getNickContactoAgregado();
             String ip = vista.getIpContactoAgregado();
             int puerto = Integer.parseInt(vista.getPuertoContactoAgregado());
+            if (puerto <= 1000 || puerto > 65500){
+                vista.muestraVentanaEmergente("El puerto no es válido");
+            } else {
+                sistema.nuevoContacto(nickname,puerto,ip);
+                vista.muestraVentanaEmergente("Contacto agendado exitosamente");
+            }
             //creamos un objeto contacto -> nickname, puerto, ip y arraylist vacio de chats
-            sistema.nuevoContacto(nickname,puerto,ip);
+            
         }
     }
+
+    // chequea si el puerto esta libre o no
+    public boolean puertoDisponible(int puerto) {
+    try (ServerSocket ss = new ServerSocket(puerto)) {//trata de abrir un socket para ese puerto
+        ss.setReuseAddress(true); // para que despues puedas abrirlo
+        return true;//no esta en uso -> pudo abrirlo
+    } catch (IOException e) {
+        return false;// el socket ya esta en uso -> no puede abrirlo, salta excepcion
+    }
+}
+
 
     public void listaContactosMouseClicked(java.awt.event.MouseEvent evt){
         vista.limpiaChat();

@@ -36,7 +36,6 @@ public class VistaLogIn extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         nickUsuario = new javax.swing.JTextField();
-        ipUsuario = new javax.swing.JTextField();
         puertoUsuario = new javax.swing.JTextField();
         bLogIn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -75,15 +74,6 @@ public class VistaLogIn extends javax.swing.JFrame {
             }
         });
 
-        ipUsuario.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
-        ipUsuario.setForeground(new java.awt.Color(245, 85, 132));
-        ipUsuario.setText(" ip");
-        ipUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ipUsuarioActionPerformed(evt);
-            }
-        });
-
         puertoUsuario.setFont(new java.awt.Font("Meiryo UI", 0, 12)); // NOI18N
         puertoUsuario.setForeground(new java.awt.Color(245, 85, 132));
         puertoUsuario.setText(" puerto");
@@ -113,31 +103,28 @@ public class VistaLogIn extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(131, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(puertoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(ipUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(nickUsuario))
-                        .addGap(131, 131, 131))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(bLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(181, 181, 181))))
+                    .addComponent(puertoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(nickUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(131, 131, 131))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(bLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(181, 181, 181)))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addGap(112, 112, 112)
                 .addComponent(nickUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ipUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(puertoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bLogIn)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Meiryo UI", 0, 24)); // NOI18N
@@ -187,10 +174,6 @@ public class VistaLogIn extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void ipUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ipUsuarioActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
@@ -255,11 +238,8 @@ public class VistaLogIn extends javax.swing.JFrame {
 	}
     
     public String getNickUsuario() {
-		String aux = this.nickUsuario.getText();
-		if (!aux.equals(""))
-			return aux;
-		JOptionPane.showMessageDialog(null,"Debe Introducir nombre de usuario");
-		return null;
+		String nickUsuario = this.nickUsuario.getText();
+		return nickUsuario;
 	}
     
     public int getPuertoUsuario(){
@@ -267,7 +247,6 @@ public class VistaLogIn extends javax.swing.JFrame {
         int puerto = Integer.parseInt(puertoString);
         
         if (puerto < 1000 || puerto > 60000){
-			JOptionPane.showMessageDialog(null, "Puerto en rango Invalido");//abre ventana errorr
 			return -1;
 		} else
 			return puerto;
@@ -277,13 +256,16 @@ public class VistaLogIn extends javax.swing.JFrame {
         
     }
 
+    public void muestraVentanaEmergente(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+
 	
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bLogIn;
-    private javax.swing.JTextField ipUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

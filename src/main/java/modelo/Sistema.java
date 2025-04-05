@@ -23,6 +23,7 @@ public class Sistema {
     private DefaultListModel<Contacto> contactos = new DefaultListModel<Contacto>();
     private DefaultListModel<String> nicksContactos = new DefaultListModel<String>();
     private DefaultListModel<String> nicksChats = new DefaultListModel<String>();
+    private Emisor emisor;
     
     /*
     private Usuario usuario;
@@ -116,7 +117,7 @@ public class Sistema {
     }
 
     public void enviaMensaje(String mensaje, String ipContacto, int puertoContacto){
-        Emisor emisor = new Emisor(mensaje, ipContacto, puertoContacto);
+        emisor = new Emisor(mensaje, ipContacto, puertoContacto);
         emisor.clienteInstantaneo();       
     }
 

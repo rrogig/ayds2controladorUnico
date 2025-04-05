@@ -40,9 +40,11 @@ public class Emisor {
             out.close();
             socket.close();
             System.out.println("Se cerro el socket cliente") ;
-        } catch (Exception e) {
+
+        }catch (Exception e) {
             e.printStackTrace();
         }
-    }  
-}
+    }
+}  
+
 
